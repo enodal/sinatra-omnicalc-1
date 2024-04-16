@@ -1,7 +1,7 @@
 require "sinatra"
 require "sinatra/reloader"
 
-get("/howdy") do
+get("/") do
   "hello there"
   erb(:hello)
 end
@@ -21,9 +21,14 @@ get("/square/results") do
   erb(:square_results)
 end
 
-get("/") do
-  "
-  <h1>Welcome to your Sinatra App!</h1>
-  <p>Define some routes in app.rb</p>
-  "
+
+get("/square_root/new") do
+  erb(:new_root_calc)
+end
+
+get("/square_root/results") do
+  @the_num = params.fetch("users_number2").to_f
+  
+  @the_result = @the_num ** 0.5
+  erb(:root_results)
 end
